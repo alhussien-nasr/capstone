@@ -1,0 +1,48 @@
+:root{
+ --sub-color: grey;
+--main-color: black;
+
+}
+
+.Input-style{
+ border-width: 0 0 1px 0;
+ border: none;
+ padding: 10px 10px 10px 5px;
+ background-color: white;
+ color: var(--sub-color);
+ font-size: 18px;
+ display: block;
+ width: 100%;
+ border-radius: 0;
+ margin: 25px 0px;
+ border-bottom: 1px solid var(--sub-color);
+
+
+}
+.input-label{
+    color: var(--sub-color);
+    position: absolute;
+    font-size: 16px;
+    transition: 0.2s ease all;
+    left: 5px;
+    top: 10px;
+    transition: 300ms ease all;
+
+}
+.Input-style:focus ~ .input-label {
+    top: -14px;
+    font-size: 12px;
+    color: var(--main-color);
+  
+}
+.Input-style:focus{
+    outline: none;
+}
+
+.input-container{   
+     position: relative;
+}
+
+input[type='password'] {
+    letter-spacing: 0.3em;
+  }

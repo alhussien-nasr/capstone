@@ -1,0 +1,10 @@
+.Category-list-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+
+    
+    
+}

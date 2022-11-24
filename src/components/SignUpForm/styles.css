@@ -1,0 +1,10 @@
+.Sign-up-Container{
+    display: flex;
+    justify-content: space-around;
+}
+.log-in-form-Container{
+    width: 380px;
+}
+.sign-up-form-Container{
+    width: 380px;
+}

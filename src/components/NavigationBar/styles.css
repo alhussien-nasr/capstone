@@ -1,0 +1,15 @@
+.NavigationBar-container{
+    display: flex;
+    width: 100%;
+    position: sticky;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    flex: 1;
+    box-sizing: border-box;
+    padding: 20px 30px 0 ;
+}
+.crown{
+    width: 50px;
+    height: 50px;
+} 
