@@ -1,0 +1,7 @@
+.log-in-form-Container{
+    width: 380px;
+}
+.log-in-btn{
+    display: flex;
+    justify-content: space-between;
+}

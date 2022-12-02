@@ -1,32 +1,39 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUser,
 } from "../../utils/firebase";
 import { FormInput } from "../FormInput";
 import "./styles.css";
-
+import { Button } from "../Button";
+import { userContext } from "../../context/UserContext";
 const defultFormField = {
-  displayname: "",
+  displayName: "",
   email: "",
   password: "",
   confirmpassword: "",
 };
 
 export const SignUpForm = () => {
+  const { setCurrentUser } = useContext(userContext);
+
   const [formFields, setFormFields] = useState(defultFormField);
 
-  const { displayname, email, password, confirmpassword } = formFields;
+  const { displayName, email, password, confirmpassword } = formFields;
 
-  const handleSubmit = async () => {
-    if (password == confirmpassword) {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (password === confirmpassword) {
       try {
-        const snapshot = await createAuthUserWithEmailAndPassword(
+        const { user } = await createAuthUserWithEmailAndPassword(
           email,
           password
         );
-        const { uid } = snapshot;
-        createUser({ uid, displayname, email });
+        const { uid } = user;
+        await createUser({ uid, displayName, email });
+        setCurrentUser(user);
+        console.log(user, "user");
         setFormFields(defultFormField);
       } catch (error) {
         console.log("err", error);
@@ -40,81 +47,51 @@ export const SignUpForm = () => {
     event.preventDefault();
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
+    console.log(formFields, "form");
   };
 
   return (
-    <div className="Sign-up-Container">
-      <form className="log-in-form-Container">
-        <h2>i already have account </h2>
-        <h4>sign in with your Email and password</h4>
-        <FormInput
-          id="log-in-email"
-          label="Email"
-          name="email"
-          className="Input-style"
-          required
-          type={"text"}
-          onChange={handleChange}
-          value={email}
-        />
-        <FormInput
-          label="password"
-          id="log-in-password"
-          name="password"
-          className="Input-style"
-          required
-          type={"text"}
-          onChange={handleChange}
-          value={password}
-        />
-      </form>
+    <form onSubmit={handleSubmit} className="sign-up-form-Container">
+      <h2>i do not have account </h2>
+      <h4>sign in with your Email and password</h4>
 
-      <form onSubmit={handleSubmit} className="sign-up-form-Container">
-        <h2>i do not have account </h2>
-        <h4>sign in with your Email and password</h4>
-
-        <FormInput
-          label="name"
-          htmlFor="DisplayName"
-          id="DisplayName"
-          name="displayname"
-          required
-          type={"text"}
-          onChange={handleChange}
-          value={displayname}
-        />
-        <FormInput
-          id="email"
-          label="Email"
-          name="email"
-          className="Input-style"
-          required
-          type={"text"}
-          onChange={handleChange}
-          value={email}
-        />
-        <FormInput
-          label="password"
-          id="password"
-          name="password"
-          className="Input-style"
-          required
-          type={"text"}
-          onChange={handleChange}
-          value={password}
-        />
-        <FormInput
-          label="confirm password"
-          id="confirmpassword"
-          name="confirmpassword"
-          className="Input-style"
-          required
-          type={"text"}
-          onChange={handleChange}
-          value={confirmpassword}
-        />
-        <button>submit</button>
-      </form>
-    </div>
+      <FormInput
+        label="name"
+        id="displayName"
+        name="displayName"
+        required
+        type={"text"}
+        onChange={handleChange}
+        value={displayName}
+      />
+      <FormInput
+        id="email"
+        label="Email"
+        name="email"
+        required
+        type={"text"}
+        onChange={handleChange}
+        value={email}
+      />
+      <FormInput
+        label="password"
+        id="password"
+        name="password"
+        required
+        type={"password"}
+        onChange={handleChange}
+        value={password}
+      />
+      <FormInput
+        label="confirm password"
+        id="confirmpassword"
+        name="confirmpassword"
+        required
+        type={"password"}
+        onChange={handleChange}
+        value={confirmpassword}
+      />
+      <Button>submit</Button>
+    </form>
   );
 };

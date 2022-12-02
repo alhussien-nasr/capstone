@@ -1,21 +1,16 @@
-import React from "react";
-import { SignUpForm } from "../../components/SignUpForm";
-import { signInWhithGooglePopup, createUser } from "../../utils/firebase";
+import React, { useContext } from "react";
 
+import { LogInForm } from "../../components/LogInForm";
+import { SignUpForm } from "../../components/SignUpForm";
+import "./styles.css";
+import { userContext } from "../../context/UserContext";
 export const LogIn = () => {
-  const logGoogleUser = async () => {
-    try {
-      const {user} = await signInWhithGooglePopup();
-      await createUser(user);
-    } catch (error) {
-      console.log(error, "err");
-    }
-  };
+  const { currentUser } = useContext(userContext);
+  console.log(currentUser, "currentUser");
   return (
-    <div>
-      <h1>log in</h1>
-      {/* <button onClick={logGoogleUser}>log in</button> */}
-      <SignUpForm/>
+    <div className="log-in-container">
+      <LogInForm />
+      <SignUpForm />
     </div>
   );
 };

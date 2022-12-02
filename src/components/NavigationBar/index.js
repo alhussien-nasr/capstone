@@ -1,18 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { ReactComponent as Crown } from "../../assets/crown.svg";
+import { CartDropdownContext } from "../../context/CartDropdownContext";
+import { userContext } from "../../context/UserContext";
+import { signOutUser } from "../../utils/firebase";
+import { CartDropdown } from "../CartDropdown";
+import { CartIcon } from "../CartIcon";
 import "./styles.css";
 
 const NavigationBar = () => {
+  const { currentUser } = useContext(userContext);
+  const { dorpdown } = useContext(CartDropdownContext);
+
   return (
     <>
-      <div className="NavigationBar-container">
-        <Link className="Link" to="">
-        <Crown className="crown"  />
+      <div className="navigation">
+        <Link className="logo-container" to="">
+          <Crown className="logo" />
         </Link>
-        <Link className="Link" to="/LogIn">
-          signin
-        </Link>
+        <div className="nav-links-container">
+          <Link className="nav-link" to="/shop">
+            SHOP
+          </Link>
+
+          {currentUser ? (
+            <span className="nav-link" onClick={signOutUser}>
+              LOG OUT
+            </span>
+          ) : (
+            <Link className="nav-link" to="/LogIn">
+              SIGN IN
+            </Link>
+          )}
+          <CartIcon />
+        </div>
+        {dorpdown && <CartDropdown />}
       </div>
       <Outlet />
     </>

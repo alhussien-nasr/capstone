@@ -1,5 +1,10 @@
 import React from "react";
+import "./styles.css";
 
-export const index = ({ children }) => {
-  return <button className="btn">children</button>;
+const ButtonTypes = {
+  google: "google-sign-in",
+  inverted: "inverted",
+};
+export const Button = ({ children, ClassType  ,onClick , ...props}) => {
+  return <button onClick={onClick} {...props} className={`button-container ${ButtonTypes[ClassType]}`}>{children}</button>;
 };
