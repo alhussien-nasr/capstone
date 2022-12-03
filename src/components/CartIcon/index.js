@@ -10,7 +10,7 @@ export const CartIcon = () => {
   const toggleDropdown = () => {
     setDropdown(!dorpdown);
   };
-  
+
   return (
     <div className="cart-icon-container" onClick={toggleDropdown}>
       <ShoppingBag className="shopping-icon" />
