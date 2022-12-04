@@ -1,14 +1,14 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useContext } from "react";
 import { ChechoutItem } from "../../components/CheckoutItem";
+import { CartContext } from "../../context/CartContext";
 import "./styles.css";
 
 export const Checkout = () => {
-  const { state } = useLocation();
+  const { cartItems } = useContext(CartContext);
   return (
     <div>
-      {state.map((item) => (
-        <ChechoutItem item={item} />
+      {cartItems.map((item) => (
+        <ChechoutItem key={item.id} item={item} />
       ))}
     </div>
   );

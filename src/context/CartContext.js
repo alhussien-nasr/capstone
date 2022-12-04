@@ -26,19 +26,23 @@ export const CartProvider = ({ children }) => {
       );
     }
   };
-  const increaseQty = (ptoduct) => {
+  const increaseQty = (product) => {
     setCartItems(
       cartItems.map((item) =>
-        item.id == ptoduct.id ? { ...item, quantity: ++item.quantity } : item
+        item.id == product.id ? { ...item, quantity: ++item.quantity } : item
       )
     );
   };
-  const decreaseQty = (ptoduct) => {
+  const decreaseQty = (product) => {
     setCartItems(
       cartItems.map((item) =>
-        item.id == ptoduct.id ? { ...item, quantity: item.quantity - 1 } : item
+        item.id == product.id ? { ...item, quantity: item.quantity - 1 } : item
       )
     );
+  };
+  const deleteItem = (id) => {
+    console.log(id);
+    setCartItems(cartItems.filter((item) => item.id !== id));
   };
 
   const cartCount = cartItems.reduce(
@@ -54,6 +58,7 @@ export const CartProvider = ({ children }) => {
     cartCount,
     increaseQty,
     decreaseQty,
+    deleteItem,
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
