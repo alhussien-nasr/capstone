@@ -8,16 +8,16 @@ import reportWebVitals from "./reportWebVitals";
 import NavigationBar from "./components/NavigationBar";
 import { UserProvider } from "./context/UserContext";
 import { ProductProvider } from "./context/ProductContext";
-import { CartDropdownProvider } from "./context/CartDropdownContext";
+import { CartProvider } from "./context/CartContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
         <ProductProvider>
-          <CartDropdownProvider>
+          <CartProvider>
           <App />
-          </CartDropdownProvider>
+          </CartProvider>
         </ProductProvider>
       </UserProvider>
     </BrowserRouter>

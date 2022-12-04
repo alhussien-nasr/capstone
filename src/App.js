@@ -4,6 +4,7 @@ import Home from "./routes/Home";
 import NavigationBar from "./components/NavigationBar";
 import { LogIn } from "./routes/LogIn";
 import { Shop } from "./routes/Shop";
+import { Checkout } from "./routes/Checkout";
 function App() {
   return (
     <Routes>
@@ -12,6 +13,7 @@ function App() {
         <Route path="/shop" element={<Shop />}></Route>
         <Route path="/LogIn" element={<LogIn />}></Route>
       </Route>
+      <Route path="/checkout" element={<Checkout />}></Route>
     </Routes>
   );
 }

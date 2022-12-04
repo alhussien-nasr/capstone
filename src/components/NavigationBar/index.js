@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { ReactComponent as Crown } from "../../assets/crown.svg";
-import { CartDropdownContext } from "../../context/CartDropdownContext";
+import { CartContext } from "../../context/CartContext";
 import { userContext } from "../../context/UserContext";
 import { signOutUser } from "../../utils/firebase";
 import { CartDropdown } from "../CartDropdown";
@@ -10,7 +10,7 @@ import "./styles.css";
 
 const NavigationBar = () => {
   const { currentUser } = useContext(userContext);
-  const { dorpdown } = useContext(CartDropdownContext);
+  const { dorpdown } = useContext(CartContext);
 
   return (
     <>
