@@ -2,14 +2,10 @@ import React, { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import "./styles.css";
 export const ChechoutItem = ({ item }) => {
-  const { addItemToCart, removeItemfromCart, cartItems, deleteItem } =
+  const { addItemToCart, removeItemfromCart,deleteItem } =
     useContext(CartContext);
 
-  const { id } = item;
-  console.log(id, "id");
-  const product = cartItems.find((item) => item.id == id);
-  console.log(product);
-  const { name, price, imageUrl, quantity } = product;
+  const { name, price, imageUrl, quantity, id } = item;
   return (
     <div className="checkout-item-container">
       <img src={imageUrl} />
