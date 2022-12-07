@@ -5,7 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import NavigationBar from "./components/NavigationBar";
 import { UserProvider } from "./context/UserContext";
 import { CategoriesProvider } from "./context/CategoriesContext";
 import { CartProvider } from "./context/CartContext";
