@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
  import './styles.css'
 export const CartItem = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
