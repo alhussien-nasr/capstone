@@ -1,7 +1,9 @@
 import React from "react";
 import CategoryCard from "../CategoryCard";
 import "./style.css";
-const CaregoryList = ({category}) => {
+import { category } from "../../Data/category";
+
+const CaregoryList = () => {
   return (
     <div className="Category-list-container">
       {category.map((item) => (

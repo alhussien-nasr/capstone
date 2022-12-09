@@ -6,7 +6,7 @@ import CaregoryList from "../../components/CategoryList";
 const Home = () => {
   return (
     <div className="home-container">
-      <CaregoryList category={category} />
+      <CaregoryList />
     </div>
   );
 };

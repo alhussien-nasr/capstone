@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import {
   signInWhithGooglePopup,
   logInWIthEmailAndPassword,
@@ -15,7 +15,6 @@ const defultFormField = {
 };
 
 export function LogInForm() {
-
   const [formFields, setFormFields] = useState(defultFormField);
 
   const { email, password } = formFields;
@@ -24,7 +23,6 @@ export function LogInForm() {
     event.preventDefault();
     try {
       const { user } = await logInWIthEmailAndPassword(email, password);
-      console.log(user);
     } catch (error) {
       console.log(error.code, "err");
       if (error.code === "auth/wrong-password") {
@@ -38,7 +36,6 @@ export function LogInForm() {
   const logGoogleUser = async () => {
     try {
       const { user } = await signInWhithGooglePopup();
-      console.log(user);
     } catch (error) {
       console.log(error, "err");
     }

@@ -5,7 +5,7 @@ import "./styles.css";
 export const CategoryPreview = ({ title, product }) => {
   return (
     <div key={title} className={"category-preview-container"}>
-      <Link className="title" to={title}>
+      <Link className="title" to={title.toLocaleLowerCase()}>
         <span>{title}</span>
       </Link>
       <div className="preview">

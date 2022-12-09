@@ -79,7 +79,7 @@ export const getCategory = async () => {
   const snapshot = await getDocs(collectionRef);
   return snapshot.docs.reduce((acc, documentSnapshot) => {
     const { items, title } = documentSnapshot.data();
-    acc[title] = items;
+    acc[title.toLowerCase()] = items;
     return acc;
   }, {});
 };

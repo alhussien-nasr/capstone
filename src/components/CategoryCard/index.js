@@ -1,18 +1,16 @@
 import React from "react";
 import "./style.css";
 import { category } from "../../Data/category";
-import { useNavigation } from "react-router-dom";
+import { Link, useNavigation } from "react-router-dom";
 const CategoryCard = ({ item }) => {
-
-  
   return (
-    <button className={`CategoryCard-style`} onClick={() => {}}>
+    <Link className={`CategoryCard-style`} to={item.route}>
       <img src={item.imageUrl} />
       <div className="CategoryCard-title">
         <h3>{item.title}</h3>
         <p>SHOP NOW</p>
       </div>
-    </button>
+    </Link>
   );
 };
 

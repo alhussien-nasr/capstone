@@ -7,7 +7,6 @@ import { CategoriesContext } from "../../context/CategoriesContext";
 
 export const Category = () => {
   const { category } = useParams();
-  console.log(category, "tile");
   const { categoriesMap } = useContext(CategoriesContext);
   const product = categoriesMap[category];
   return (
