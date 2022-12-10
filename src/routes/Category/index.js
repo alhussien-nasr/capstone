@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "./styles.css";
 import { useParams } from "react-router-dom";
-import { CategoryPreview } from "../../components/CategotyPreview";
 import { ProductCard } from "../../components/ProductCard";
 import { CategoriesContext } from "../../context/CategoriesContext";
 
