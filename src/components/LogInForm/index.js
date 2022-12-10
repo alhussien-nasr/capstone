@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { redirect, useNavigate } from "react-router-dom";
 import {
   signInWhithGooglePopup,
   logInWIthEmailAndPassword,
@@ -14,7 +15,8 @@ const defultFormField = {
   confirmpassword: "",
 };
 
-export function LogInForm() {
+export const LogInForm = () => {
+  const navigate = useNavigate()
   const [formFields, setFormFields] = useState(defultFormField);
 
   const { email, password } = formFields;
@@ -23,6 +25,7 @@ export function LogInForm() {
     event.preventDefault();
     try {
       const { user } = await logInWIthEmailAndPassword(email, password);
+      navigate("/");
     } catch (error) {
       console.log(error.code, "err");
       if (error.code === "auth/wrong-password") {
@@ -36,6 +39,7 @@ export function LogInForm() {
   const logGoogleUser = async () => {
     try {
       const { user } = await signInWhithGooglePopup();
+      navigate("/");
     } catch (error) {
       console.log(error, "err");
     }
@@ -76,4 +80,4 @@ export function LogInForm() {
       </div>
     </form>
   );
-}
+};

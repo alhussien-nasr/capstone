@@ -7,6 +7,7 @@ import { FormInput } from "../FormInput";
 import "./styles.css";
 import { Button } from "../Button";
 import { userContext } from "../../context/UserContext";
+import {  useNavigate } from "react-router-dom";
 const defultFormField = {
   displayName: "",
   email: "",
@@ -15,6 +16,8 @@ const defultFormField = {
 };
 
 export const SignUpForm = () => {
+  const navigate = useNavigate()
+
   const { setCurrentUser } = useContext(userContext);
 
   const [formFields, setFormFields] = useState(defultFormField);
@@ -33,8 +36,8 @@ export const SignUpForm = () => {
         const { uid } = user;
         await createUser({ uid, displayName, email });
         setCurrentUser(user);
-        console.log(user, "user");
         setFormFields(defultFormField);
+        navigate("/");
       } catch (error) {
         console.log("err", error);
         if (error.code == "auth/email-already-in-use")
