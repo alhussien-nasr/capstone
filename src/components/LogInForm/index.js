@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   signInWhithGooglePopup,
   logInWIthEmailAndPassword,
@@ -16,7 +16,7 @@ const defultFormField = {
 };
 
 export const LogInForm = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [formFields, setFormFields] = useState(defultFormField);
 
   const { email, password } = formFields;

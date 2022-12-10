@@ -7,7 +7,7 @@ import { FormInput } from "../FormInput";
 import "./styles.css";
 import { Button } from "../Button";
 import { userContext } from "../../context/UserContext";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const defultFormField = {
   displayName: "",
   email: "",
@@ -16,7 +16,7 @@ const defultFormField = {
 };
 
 export const SignUpForm = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const { setCurrentUser } = useContext(userContext);
 

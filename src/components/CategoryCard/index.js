@@ -1,7 +1,6 @@
 import React from "react";
 import "./style.css";
-import { category } from "../../Data/category";
-import { Link, useNavigation } from "react-router-dom";
+import { Link } from "react-router-dom";
 const CategoryCard = ({ item }) => {
   return (
     <Link className={`CategoryCard-style`} to={item.route}>
