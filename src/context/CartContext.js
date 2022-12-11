@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useReducer, useState } from "react";
 
 const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
@@ -15,6 +15,7 @@ const addCartItem = (cartItems, productToAdd) => {
 
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
+
 const removeCartItem = (cartItems, cartItemToRemove) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === cartItemToRemove.id
@@ -42,7 +43,22 @@ export const CartContext = createContext({
   cartTotal: 0,
 });
 
+const cartReducer = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case "ADD_ITEM_TO_CART":
+      const cartItem = addCartItem(state.cartItem, payload);
+      return { ...state, cartItem: cartItem };
+  }
+};
+
+const initalState = { cartItem: [], dorpdown: false };
+
 export const CartProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(cartReducer, initalState);
+
+  const { cartItem } = state;
+
   const [dorpdown, setDropdown] = useState(false);
 
   const [cartItems, setCartItems] = useState([]);
@@ -66,6 +82,7 @@ export const CartProvider = ({ children }) => {
   const cartTotal = cartItems.reduce((total, current) => {
     return total + current.price * current.quantity;
   }, 0);
+
   const value = {
     dorpdown,
     cartItems,
@@ -75,6 +92,8 @@ export const CartProvider = ({ children }) => {
     addItemToCart,
     removeItemfromCart,
     clearItem,
+    cartItem,
+    dispatch,
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
