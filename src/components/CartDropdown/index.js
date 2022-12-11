@@ -8,7 +8,7 @@ export const CartDropdown = () => {
   const { cartItems } = useContext(CartContext);
   const navigate = useNavigate();
   const navigateToCheckout = () => {
-    navigate("/checkout", { state: cartItems });
+    navigate("/checkout");
   };
   return (
     <div className="cart-dropdown-container">
