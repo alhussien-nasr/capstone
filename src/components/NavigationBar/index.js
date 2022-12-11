@@ -10,7 +10,7 @@ import "./styles.css";
 
 const NavigationBar = () => {
   const { currentUser } = useContext(userContext);
-  const { dorpdown } = useContext(CartContext);
+  const { dropdown } = useContext(CartContext);
 
   return (
     <>
@@ -34,7 +34,7 @@ const NavigationBar = () => {
           )}
           <CartIcon />
         </div>
-        {dorpdown && <CartDropdown />}
+        {dropdown && <CartDropdown />}
       </div>
       <Outlet />
     </>
