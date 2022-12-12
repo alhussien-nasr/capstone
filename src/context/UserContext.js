@@ -12,7 +12,6 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthChangeListner((user) => {
-
       if (user) {
         createUser(user);
       }
