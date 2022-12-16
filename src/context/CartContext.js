@@ -51,16 +51,11 @@ const cartReducer = (state, action) => {
       return { ...state, dropdown: !state.dropdown };
 
     case "ADD_ITEM_TO_CART":
-      const itemToAdd = addCartItem(state.cartItems, payload);
-      return { ...state, cartItems: itemToAdd };
+      return { ...state, cartItems: payload };
     case "REMOVE_ITEM_FROM_CART":
-      let filteredCart = removeCartItem(state.cartItems, payload);
-      return { ...state, cartItems: filteredCart };
+      return { ...state, cartItems: payload };
     case "CLEAR_ITEM_FROM_CART":
-      let removeFromCart = state.cartItems.filter(
-        (item) => item.id !== payload
-      );
-      return { ...state, cartItems: removeFromCart };
+      return { ...state, cartItems: payload };
   }
 };
 
@@ -72,15 +67,19 @@ export const CartProvider = ({ children }) => {
   const { cartItems, dropdown } = state;
 
   const addItemToCart = (productToAdd) => {
-    dispatch({ type: "ADD_ITEM_TO_CART", payload: productToAdd });
+    const itemToAdd = addCartItem(state.cartItems, productToAdd);
+    dispatch({ type: "ADD_ITEM_TO_CART", payload: itemToAdd });
   };
 
   const removeItemfromCart = (cartItemToRemove) => {
-    dispatch({ type: "REMOVE_ITEM_FROM_CART", payload: cartItemToRemove });
+    let filteredCart = removeCartItem(cartItems, cartItemToRemove);
+    dispatch({ type: "REMOVE_ITEM_FROM_CART", payload: filteredCart });
   };
 
   const clearItem = (id) => {
-    dispatch({ type: "CLEAR_ITEM_FROM_CART", payload: id });
+    let filteredCart = cartItems.filter((item) => item.id !== id);
+
+    dispatch({ type: "CLEAR_ITEM_FROM_CART", payload: filteredCart });
   };
 
   const toggleDropdown = () => {
