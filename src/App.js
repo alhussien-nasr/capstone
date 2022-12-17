@@ -7,8 +7,9 @@ import NavigationBar from "./components/NavigationBar";
 import { LogIn } from "./routes/LogIn";
 import { Shop } from "./routes/Shop";
 import { Checkout } from "./routes/Checkout";
-import { createUser, onAuthChangeListner } from "./utils/firebase";
+import { createUser, getCategory, onAuthChangeListner } from "./utils/firebase";
 import { setCurrentUser } from "./store/user/userAction";
+import { setCategoriesMap } from "./store/categories/categoriesActions";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,14 @@ function App() {
     });
 
     return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    const category = async () => {
+      const data = await getCategory();
+      dispatch(setCategoriesMap(data));
+    };
+    category();
   }, []);
 
   return (

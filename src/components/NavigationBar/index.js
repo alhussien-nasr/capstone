@@ -12,7 +12,6 @@ const NavigationBar = () => {
   const { currentUser } = useSelector((state) => state.user);
   const { dropdown } = useSelector((state) => state.cart);
 
-  // const { dropdown } = useContext(CartContext);
 
   return (
     <>
