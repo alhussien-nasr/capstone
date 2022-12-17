@@ -1,0 +1,3 @@
+const CART_TYPES = {
+  TOOGLE_CART: "TOOGLE_CART",
+};
