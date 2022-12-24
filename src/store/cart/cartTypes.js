@@ -1,3 +1,4 @@
-const CART_TYPES = {
+export const CART_TYPES = {
   TOOGLE_CART: "TOOGLE_CART",
+  SET_CART_ITEM: "SET_CART_ITEM",
 };

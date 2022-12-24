@@ -9,7 +9,7 @@ import { Shop } from "./routes/Shop";
 import { Checkout } from "./routes/Checkout";
 import { createUser, getCategory, onAuthChangeListner } from "./utils/firebase";
 import { setCurrentUser } from "./store/user/userAction";
-import { setCategoriesMap } from "./store/categories/categoriesActions";
+import { setCategories } from "./store/categories/categoriesActions";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ function App() {
   useEffect(() => {
     const category = async () => {
       const data = await getCategory();
-      dispatch(setCategoriesMap(data));
+      dispatch(setCategories(data));
     };
     category();
   }, []);

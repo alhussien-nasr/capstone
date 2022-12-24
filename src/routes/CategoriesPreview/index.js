@@ -3,9 +3,10 @@ import { useSelector } from "react-redux";
 import "./styles.css";
 
 import { CategoryPreview } from "../../components/CategotyPreview";
+import { categoriesSelector } from "../../store/categories/categoriesSelector";
 
 export const CategoriesPreview = () => {
-  const { categoriesMap } = useSelector((state) => state.categories);
+  const categoriesMap = useSelector(categoriesSelector);
   return (
     <>
       {Object.keys(categoriesMap).map((title) => {

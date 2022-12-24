@@ -77,9 +77,5 @@ export const addCategory = (catt) => {
 export const getCategory = async () => {
   const collectionRef = collection(db, "category");
   const snapshot = await getDocs(collectionRef);
-  return snapshot.docs.reduce((acc, documentSnapshot) => {
-    const { items, title } = documentSnapshot.data();
-    acc[title.toLowerCase()] = items;
-    return acc;
-  }, {});
+  return snapshot.docs.map((doc) => doc.data());
 };

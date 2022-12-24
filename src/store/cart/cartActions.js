@@ -1,3 +1,5 @@
+import { CART_TYPES } from "./cartTypes";
+
 const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
@@ -32,7 +34,6 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
 
 export const addItemToCart = (state, productToAdd) => {
   const cartItems = addCartItem(state, productToAdd);
-  console.log(cartItems);
   const cartTotal = cartItems.reduce(
     (total, current) => total + current.price,
     0
@@ -42,7 +43,7 @@ export const addItemToCart = (state, productToAdd) => {
     0
   );
   return {
-    type: "ADD_ITEM_TO_CART",
+    type: CART_TYPES.SET_CART_ITEM,
     payload: { cartItems, cartTotal, cartCount },
   };
 };
@@ -59,7 +60,7 @@ export const removeItemfromCart = (state, cartItemToRemove) => {
   );
 
   return {
-    type: "REMOVE_ITEM_FROM_CART",
+    type: CART_TYPES.SET_CART_ITEM,
     payload: { cartItems, cartTotal, cartCount },
   };
 };
@@ -76,7 +77,7 @@ export const clearItem = (state, id) => {
   );
 
   return {
-    type: "CLEAR_ITEM_FROM_CART",
+    type: CART_TYPES.SET_CART_ITEM,
     payload: { cartItems, cartTotal, cartCount },
   };
 };

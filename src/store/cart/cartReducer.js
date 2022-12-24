@@ -1,3 +1,5 @@
+import { CART_TYPES } from "./cartTypes";
+
 const initalState = {
   dropdown: false,
   cartItems: [],
@@ -5,17 +7,13 @@ const initalState = {
   cartTotal: 0,
 };
 
-export const cartReducer = (state = initalState, action) => {
+export const cartReducer = (state = initalState, action = {}) => {
   const { type, payload } = action;
   switch (type) {
-    case "TOOGLE_CART":
+    case CART_TYPES.TOOGLE_CART:
       return { ...state, dropdown: !state.dropdown };
 
-    case "ADD_ITEM_TO_CART":
-      return { ...state, ...payload };
-    case "REMOVE_ITEM_FROM_CART":
-      return { ...state, ...payload };
-    case "CLEAR_ITEM_FROM_CART":
+    case CART_TYPES.SET_CART_ITEM:
       return { ...state, ...payload };
     default:
       return state;
