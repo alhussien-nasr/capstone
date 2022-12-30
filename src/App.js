@@ -9,7 +9,9 @@ import { Shop } from "./routes/Shop";
 import { Checkout } from "./routes/Checkout";
 import { createUser, getCategory, onAuthChangeListner } from "./utils/firebase";
 import { setCurrentUser } from "./store/user/userAction";
-import { setCategories } from "./store/categories/categoriesActions";
+import {
+  fetchCategoriesStart,
+} from "./store/categories/categoriesActions";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,11 +28,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const category = async () => {
-      const data = await getCategory();
-      dispatch(setCategories(data));
-    };
-    category();
+    dispatch(fetchCategoriesStart());
   }, []);
 
   return (
