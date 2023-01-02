@@ -5,12 +5,18 @@ const ButtonTypes = {
   google: "google-sign-in",
   inverted: "inverted",
 };
-export const Button = ({ children, ClassType, onClick, ...props }) => {
+export const Button = ({
+  children,
+  ClassType,
+  onClick,
+  classname,
+  ...props
+}) => {
   return (
     <button
       onClick={onClick}
       {...props}
-      className={`button-container ${ButtonTypes[ClassType]}`}
+      className={`button-container ${ButtonTypes[ClassType]} `}
     >
       {children}
     </button>
