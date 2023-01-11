@@ -35,7 +35,7 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
 export const addItemToCart = (state, productToAdd) => {
   const cartItems = addCartItem(state, productToAdd);
   const cartTotal = cartItems.reduce(
-    (total, current) => total + current.price,
+    (total, current) => total + current.price * current.quantity,
     0
   );
   const cartCount = cartItems.reduce(
@@ -51,7 +51,7 @@ export const addItemToCart = (state, productToAdd) => {
 export const removeItemfromCart = (state, cartItemToRemove) => {
   const cartItems = removeCartItem(state, cartItemToRemove);
   const cartTotal = cartItems.reduce(
-    (total, current) => total + current.price,
+    (total, current) => total + current.price * current.quantity,
     0
   );
   const cartCount = cartItems.reduce(
@@ -68,7 +68,7 @@ export const removeItemfromCart = (state, cartItemToRemove) => {
 export const clearItem = (state, id) => {
   const cartItems = state.filter((item) => item.id !== id);
   const cartTotal = cartItems.reduce(
-    (total, current) => total + current.price,
+    (total, current) => total + current.price * current.quantity,
     0
   );
   const cartCount = cartItems.reduce(

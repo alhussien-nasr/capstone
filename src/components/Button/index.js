@@ -1,4 +1,6 @@
+import { isLabelWithInternallyDisabledControl } from "@testing-library/user-event/dist/utils";
 import React from "react";
+import { Spinner } from "../spinner";
 import "./styles.css";
 
 const ButtonTypes = {
@@ -10,15 +12,17 @@ export const Button = ({
   ClassType,
   onClick,
   classname,
+  isLoading,
   ...props
 }) => {
   return (
     <button
       onClick={onClick}
+      disabled={isLoading}
       {...props}
       className={`button-container ${ButtonTypes[ClassType]} `}
     >
-      {children}
+      {isLoading ? <div className="btn-spinner" /> : children}
     </button>
   );
 };

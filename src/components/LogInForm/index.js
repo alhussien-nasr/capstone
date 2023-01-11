@@ -17,6 +17,7 @@ const defultFormField = {
 
 export const LogInForm = () => {
   const navigate = useNavigate();
+
   const [formFields, setFormFields] = useState(defultFormField);
 
   const { email, password } = formFields;
